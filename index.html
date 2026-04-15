@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nadav Sellam</title>
+    <title>Nadav Bojan Sellam</title>
     <meta
       name="description"
-      content="Personal academic website for Nadav Sellam."
+      content="Personal academic website for Nadav Bojan Sellam."
     />
     <style>
       :root {
         --bg: #f5f2eb;
         --bg-accent: #e9ece6;
-        --surface: rgba(255, 255, 255, 0.78);
+        --surface: rgba(255, 255, 255, 0.8);
         --surface-strong: rgba(255, 255, 255, 0.94);
         --text: #1d2421;
         --muted: #55615b;
@@ -20,9 +20,9 @@
         --accent: #0f766e;
         --accent-deep: #114e49;
         --shadow: 0 24px 60px rgba(24, 34, 29, 0.12);
-        --radius-xl: 30px;
-        --radius-lg: 22px;
-        --max-width: 1080px;
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --max-width: 1440px;
       }
 
       * {
@@ -35,7 +35,6 @@
 
       body {
         margin: 0;
-        min-height: 100vh;
         font-family: Georgia, "Times New Roman", serif;
         color: var(--text);
         background:
@@ -61,57 +60,83 @@
       }
 
       .page {
-        width: min(var(--max-width), calc(100% - 2rem));
+        width: min(var(--max-width), calc(100% - 0.5rem));
         margin: 0 auto;
-        padding: 36px 0 56px;
+        padding: 4px 0 0;
       }
 
-      .frame {
+      .site-shell {
         position: relative;
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: calc(var(--radius-xl) + 6px);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.34));
         box-shadow: var(--shadow);
         backdrop-filter: blur(14px);
       }
 
-      .frame::after {
-        content: "";
-        position: absolute;
-        inset: auto -8% -140px;
-        height: 260px;
-        background: radial-gradient(circle, rgba(15, 118, 110, 0.12), transparent 62%);
-        pointer-events: none;
-      }
-
-      .hero {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 44px 28px;
-      }
-
-      .hero-inner {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 300px minmax(0, 1fr);
-        gap: 38px;
-        align-items: center;
-      }
-
-      .portrait-wrap {
+      .site-topbar {
         display: flex;
-        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px 28px;
+        border-bottom: 1px solid rgba(29, 36, 33, 0.12);
+        background:
+          linear-gradient(180deg, rgba(15, 118, 110, 0.12), rgba(15, 118, 110, 0.04)),
+          rgba(255, 255, 255, 0.94);
+      }
+
+      .site-title {
+        margin: 0;
+        font-size: 1.08rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .site-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.98rem;
+      }
+
+      .site-nav a:hover,
+      .pub-item a:hover,
+      .button:hover,
+      .button-secondary:hover {
+        color: var(--accent-deep);
+        transform: translateY(-1px);
+      }
+
+      .intro {
+        padding: 32px 28px 20px;
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 32px;
+        align-items: start;
+      }
+
+      .portrait-card,
+      .section-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: var(--surface);
+        backdrop-filter: blur(10px);
       }
 
       .portrait-card {
-        width: min(100%, 280px);
         padding: 14px;
-        border-radius: var(--radius-lg);
         background: var(--surface-strong);
-        border: 1px solid rgba(29, 36, 33, 0.08);
-        box-shadow: 0 18px 40px rgba(21, 29, 25, 0.08);
       }
 
       .portrait-card img {
@@ -132,7 +157,7 @@
 
       .eyebrow {
         display: inline-block;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
         padding: 6px 12px;
         border-radius: 999px;
         border: 1px solid rgba(15, 118, 110, 0.18);
@@ -145,17 +170,16 @@
 
       h1 {
         margin: 0;
-        font-size: clamp(3rem, 7vw, 5.5rem);
-        line-height: 0.95;
+        font-size: clamp(3rem, 7vw, 5rem);
+        line-height: 0.96;
         letter-spacing: -0.04em;
-        font-weight: 700;
       }
 
       .lead {
-        max-width: 52ch;
+        max-width: 60ch;
         margin: 18px 0 0;
-        font-size: clamp(1.05rem, 2vw, 1.22rem);
-        line-height: 1.75;
+        font-size: clamp(1.05rem, 2vw, 1.18rem);
+        line-height: 1.8;
         color: var(--muted);
       }
 
@@ -178,6 +202,7 @@
         transition:
           transform 180ms ease,
           box-shadow 180ms ease,
+          color 180ms ease,
           background 180ms ease;
       }
 
@@ -192,70 +217,71 @@
         background: rgba(255, 255, 255, 0.72);
       }
 
-      .button:hover,
-      .button-secondary:hover,
-      .pub-item a:hover {
-        transform: translateY(-1px);
+      .content {
+        display: grid;
+        gap: 24px;
+        padding: 0 28px 18px;
       }
 
-      .bio-section,
-      .publications {
-        padding: 92px 28px;
+      .section-card {
+        padding: 30px;
       }
 
-      .bio-card,
-      .pub-card {
-        width: min(760px, 100%);
-        margin: 0 auto;
-        padding: 34px;
-        border-radius: var(--radius-xl);
-        border: 1px solid var(--line);
-        background: var(--surface);
-        backdrop-filter: blur(10px);
+      .content .section-card:last-child {
+        margin-bottom: 0;
       }
 
-      h2 {
+      .section-heading {
         margin: 0 0 18px;
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        text-align: center;
+        font-size: clamp(1.7rem, 3vw, 2.2rem);
         letter-spacing: -0.03em;
       }
 
-      .bio-card p {
-        margin: 0 0 18px;
-        font-size: 1.08rem;
-        line-height: 1.9;
-        text-align: center;
+      .section-card p {
+        margin: 0 0 16px;
+        line-height: 1.85;
         color: #33413b;
       }
 
-      .bio-card p:last-child {
+      .section-card p:last-child {
         margin-bottom: 0;
+      }
+
+      .info-list {
+        display: grid;
+        gap: 30px;
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 18px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(29, 36, 33, 0.08);
+      }
+
+      .info-row:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      .info-label {
+        color: var(--muted);
       }
 
       .pub-list {
         list-style: none;
-        margin: 24px 0 0;
+        margin: 0;
         padding: 0;
         display: grid;
         gap: 14px;
       }
 
       .pub-item {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-        padding: 16px 18px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.72);
+        padding: 18px 20px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.68);
         border: 1px solid rgba(29, 36, 33, 0.08);
-      }
-
-      .pub-index {
-        min-width: 2rem;
-        color: var(--accent);
-        font-size: 0.95rem;
-        font-weight: 700;
       }
 
       .pub-item strong {
@@ -270,60 +296,91 @@
         line-height: 1.65;
       }
 
+      .pub-item span strong {
+        display: inline;
+        margin: 0;
+        font-size: inherit;
+        white-space: nowrap;
+      }
+
       .pub-item a {
         color: var(--accent-deep);
         text-decoration-thickness: 1px;
         text-underline-offset: 3px;
+        transition: color 180ms ease, transform 180ms ease;
       }
 
-      footer {
-        padding: 10px 20px 24px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.9rem;
+      .section-card .pub-note {
+        margin: 14px 0 0 18px;
+        color: rgba(85, 97, 91, 0.78);
+        font-size: 0.95rem;
       }
 
-      @media (max-width: 860px) {
-        .hero {
-          min-height: auto;
-          padding-top: 28px;
-          padding-bottom: 28px;
+      .loading-text {
+        opacity: 0.85;
+      }
+
+      #publications {
+        padding-bottom: 20px;
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          width: min(var(--max-width), calc(100% - 0.25rem));
+          padding-top: 2px;
+          padding-bottom: 0;
         }
 
-        .hero-inner {
+        .site-topbar,
+        .intro,
+        .content {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .site-topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .intro {
+          padding-top: 20px;
+        }
+
+        .intro-grid {
           grid-template-columns: 1fr;
-          gap: 28px;
-          text-align: center;
+        }
+
+        .portrait-card {
+          max-width: 240px;
         }
 
         .actions {
-          justify-content: center;
+          justify-content: flex-start;
         }
 
-        .bio-section,
-        .publications {
-          padding: 68px 18px;
+        .section-card {
+          padding: 22px;
         }
 
-        .bio-card,
-        .pub-card {
-          padding: 24px 20px;
+        .info-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
         }
       }
 
       @media (prefers-reduced-motion: no-preference) {
-        .frame,
-        .bio-card,
-        .pub-card,
-        .portrait-card {
+        .site-topbar,
+        .portrait-card,
+        .section-card {
           animation: rise 720ms ease both;
         }
 
-        .bio-card {
+        .section-card:nth-of-type(2) {
           animation-delay: 120ms;
         }
 
-        .pub-card {
+        .section-card:nth-of-type(3) {
           animation-delay: 220ms;
         }
       }
@@ -343,90 +400,144 @@
   </head>
   <body>
     <main class="page">
-      <section class="frame hero">
-        <div class="hero-inner">
-          <div class="portrait-wrap">
+      <div class="site-shell">
+        <div class="site-topbar">
+          <p class="site-title loading-text" data-text-src="content/site-name.txt">Nadav Bojan Sellam</p>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+          </nav>
+        </div>
+
+        <section class="intro">
+          <div class="intro-grid">
             <div class="portrait-card">
-              <img src="profile-placeholder.svg" alt="Portrait placeholder for Nadav Sellam" />
-              <p class="portrait-note">Replace `profile-placeholder.svg` with your own photo later.</p>
+              <img id="portrait-image" src="nadav.png" alt="Portrait of Nadav Bojan Sellam" />
+            </div>
+
+            <div>
+              <span class="eyebrow loading-text" data-text-src="content/eyebrow.txt">
+                Machine Learning Theory · Dynamics · Generalization · AI for Science
+              </span>
+              <h1 class="loading-text" data-text-src="content/site-name.txt">Nadav Bojan Sellam</h1>
+              <p class="lead loading-text" data-text-src="content/lead.txt">
+                I work on machine learning with growing emphasis on theory, optimization dynamics,
+                and generalization. My past work has focused mostly on applied problems in structural
+                biology, with some additional exposure to astrophysics and scientific modeling.
+              </p>
+
+              <div class="actions">
+                <a
+                  class="button"
+                  href="https://scholar.google.com/citations?user=3N-QKKYAAAAJ&hl=en"
+                  target="_blank"
+                  rel="noreferrer"
+                  >Google Scholar</a
+                >
+                <a
+                  class="button-secondary"
+                  href="https://www.linkedin.com/in/nadav-bojan-sellam-611115277"
+                  target="_blank"
+                  rel="noreferrer"
+                  >LinkedIn</a
+                >
+                <a class="button-secondary" href="#publications">Publications</a>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div>
-            <span class="eyebrow">Research · Machine Learning · Structural Biology</span>
-            <h1>Nadav Sellam</h1>
-            <p class="lead">
-              Personal website with a clean academic layout: a central biography, quick profile links,
-              and a publication list that stays easy to update as your work evolves.
+        <div class="content">
+          <section class="section-card" id="about">
+            <h2 class="section-heading">About</h2>
+            <p class="loading-text" data-text-src="content/about-1.txt">
+              I work at the intersection of machine learning, structural biology, and computational
+              modeling, with a focus on methods that connect experimental observations to richer
+              representations of protein structure and dynamics.
             </p>
+            <p class="loading-text" data-text-src="content/about-2.txt">
+              My interests include inverse problems in biology, generative modeling for protein
+              ensembles, and representation learning for complex molecular systems. I am especially
+              interested in approaches that stay grounded in physical measurements while still scaling
+              with modern machine learning tools.
+            </p>
+          </section>
 
-            <div class="actions">
-              <a
-                class="button"
-                href="https://scholar.google.com/scholar?q=%22Nadav+Bojan+Sellam%22"
-                target="_blank"
-                rel="noreferrer"
-                >Google Scholar</a
-              >
-              <a
-                class="button-secondary"
-                href="https://www.linkedin.com/search/results/all/?keywords=Nadav%20Sellam"
-                target="_blank"
-                rel="noreferrer"
-                >LinkedIn</a
-              >
-              <a class="button-secondary" href="#publications">Publications</a>
+          <section class="section-card" id="research">
+            <h2 class="section-heading">Research Profile</h2>
+            <div class="info-list">
+              <div class="info-row">
+                <div class="info-label">Focus</div>
+                <div class="loading-text" data-text-src="content/research-focus.txt">
+                  Machine learning theory, training dynamics, and generalization, especially in scientifically grounded settings.
+                </div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">Interests</div>
+                <div class="loading-text" data-text-src="content/research-interests.txt">
+                  Optimization in deep learning, implicit bias, representation learning, generalization, and the interface between theory and modern practice.
+                </div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">Approach</div>
+                <div class="loading-text" data-text-src="content/research-approach.txt">
+                  I am interested in moving from predominantly application-driven work toward questions about why learning systems work, how they train, and when they generalize.
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      <section class="bio-section">
-        <div class="bio-card">
-          <h2>Bio</h2>
-          <p>
-            I work at the intersection of machine learning, structural biology, and computational
-            modeling, with a focus on building methods that connect experimental observations to richer
-            representations of protein structure and dynamics.
-          </p>
-          <p>
-            My research interests include inverse problems in biology, generative modeling for protein
-            ensembles, and representation learning for complex molecular systems. I am especially
-            interested in methods that remain grounded in physical measurements while still scaling with
-            modern machine learning tools.
-          </p>
-          <p>
-            This site is set up as a concise academic homepage: an introduction, external profile links,
-            and a curated publication list. You can replace this placeholder biography with your own
-            text later without changing the layout.
-          </p>
-        </div>
-      </section>
-
-      <section class="publications" id="publications">
-        <div class="pub-card">
-          <h2>Selected Publications</h2>
-          <ol class="pub-list">
-            <li class="pub-item">
-              <div class="pub-index">01</div>
-              <div>
+          <section class="section-card" id="publications">
+            <h2 class="section-heading">Selected Publications</h2>
+            <ol class="pub-list">
+              <li class="pub-item">
                 <strong>
                   <a
-                    href="https://research-explorer.ista.ac.at/record/21327"
+                    href="https://openreview.net/forum?id=9ZogcRkhoG"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Representing local protein environments with machine learning force fields</a
+                  >
+                </strong>
+                <span>
+                  Meital Bojan, Sanketh Vedula, Sai Advaith Maddipatla, <strong>Nadav Bojan Sellam</strong>,
+                  Anar Rzayev, Federico Napoli, Paul Schanda, Alex M. Bronstein.<br />
+                  Published at ICLR 2026.
+                </span>
+              </li>
+              <li class="pub-item">
+                <strong>
+                  <a
+                    href="https://arxiv.org/abs/2511.13244"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Seek and You Shall Fold</a
+                  >
+                </strong>
+                <span>
+                  <strong>Nadav Bojan Sellam*</strong>, Meital Bojan*, Paul Schanda, Alex M. Bronstein.<br />
+                  Presented at the Machine Learning in Structural Biology (MLSB) workshop at
+                  NeurIPS 2025.
+                </span>
+              </li>
+              <li class="pub-item">
+                <strong>
+                  <a
+                    href="https://arxiv.org/abs/2502.09372"
                     target="_blank"
                     rel="noreferrer"
                     >Inverse problems with experiment-guided AlphaFold</a
                   >
                 </strong>
                 <span>
-                  Maddipatla SA, Sellam NE, Bojan MI, Vedula S, Schanda P, Marx A, Bronstein AM.
-                  ICML 2025.
+                  Sai Advaith Maddipatla*, <strong>Nadav Bojan Sellam*</strong>, Meital Bojan*,
+                  Sanketh Vedula, Paul Schanda, Ailie Marx, Alex M. Bronstein.<br />
+                  Published in the
+                  Proceedings of the 42nd International Conference on Machine Learning (ICML 2025).
                 </span>
-              </div>
-            </li>
-            <li class="pub-item">
-              <div class="pub-index">02</div>
-              <div>
+              </li>
+              <li class="pub-item">
                 <strong>
                   <a
                     href="https://www.mlsb.io/papers_2024/Generative_modeling_of_protein_ensembles_guided_by_crystallographic_electron_densities.pdf"
@@ -437,51 +548,49 @@
                   >
                 </strong>
                 <span>
-                  Maddipatla SA, Sellam NB, Vedula S, Marx A, Bronstein AM. MLSB 2024.
+                  Sai Advaith Maddipatla*, <strong>Nadav Bojan Sellam*</strong>, Sanketh Vedula,
+                  Ailie Marx, Alex M. Bronstein.<br />
+                  Presented at the Machine Learning in Structural
+                  Biology (MLSB) workshop at NeurIPS 2024.
                 </span>
-              </div>
-            </li>
-            <li class="pub-item">
-              <div class="pub-index">03</div>
-              <div>
-                <strong>
-                  <a
-                    href="https://sciety.org/articles/activity/10.21203/rs.3.rs-6034619/v1"
-                    target="_blank"
-                    rel="noreferrer"
-                    >Experiment-guided AlphaFold3 resolves accurate protein ensembles from sparse
-                    chemical shift and cryo-EM data</a
-                  >
-                </strong>
-                <span>
-                  Vedula S, Maddipatla SA, Sellam NB, Rzayev A, Marx A, Schanda P, Bronstein AM.
-                </span>
-              </div>
-            </li>
-            <li class="pub-item">
-              <div class="pub-index">04</div>
-              <div>
-                <strong>
-                  <a
-                    href="https://researchtrend.ai/papers/2505.23354"
-                    target="_blank"
-                    rel="noreferrer"
-                    >Representing local protein environments with machine learning force fields</a
-                  >
-                </strong>
-                <span>
-                  Bojan M, Vedula S, Maddipatla SA, Sellam NB, Napoli F, Schanda P, Bronstein AM.
-                  2025.
-                </span>
-              </div>
-            </li>
-          </ol>
+              </li>
+            </ol>
+            <p class="pub-note">* indicates equal contribution.</p>
+          </section>
         </div>
-      </section>
+      </div>
     </main>
+    <script>
+      const textTargets = document.querySelectorAll("[data-text-src]");
 
-    <footer>
-      Built as a lightweight static page for GitHub Pages.
-    </footer>
+      async function loadTextContent() {
+        await Promise.all(
+          Array.from(textTargets, async (element) => {
+            const response = await fetch(element.dataset.textSrc);
+            if (!response.ok) return;
+            const text = (await response.text()).trim();
+            if (!text) return;
+            element.textContent = text;
+            element.classList.remove("loading-text");
+          })
+        );
+
+        const siteName = document.querySelector("[data-text-src='content/site-name.txt']")?.textContent.trim();
+        if (!siteName) return;
+
+        document.title = siteName;
+        const description = document.querySelector("meta[name='description']");
+        if (description) {
+          description.setAttribute("content", `Personal academic website for ${siteName}.`);
+        }
+
+        const portrait = document.getElementById("portrait-image");
+        if (portrait) {
+          portrait.alt = `Portrait of ${siteName}`;
+        }
+      }
+
+      loadTextContent().catch(() => {});
+    </script>
   </body>
 </html>
