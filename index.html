@@ -159,7 +159,7 @@
         display: inline-block;
         margin-bottom: 10px;
         color: var(--accent-deep);
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 600;
         letter-spacing: 0.01em;
       }
@@ -174,15 +174,14 @@
       .identity {
         margin: 10px 0 0;
         color: var(--muted);
-        font-size: 1.02rem;
+        font-size: 1.2rem;
         line-height: 1.6;
       }
 
       .lead {
-        max-width: 60ch;
         margin: 18px 0 0;
-        font-size: clamp(1.05rem, 2vw, 1.18rem);
-        line-height: 1.8;
+        font-size: 1.26rem;
+        line-height: 1.9;
         color: var(--muted);
       }
 
@@ -238,16 +237,15 @@
       .statement-heading {
         margin: 0 0 16px;
         color: var(--accent-deep);
-        font-size: 1.42rem;
+        font-size: 2.15rem;
         font-weight: 700;
         letter-spacing: 0.04em;
       }
 
       .statement-text {
-        max-width: 72ch;
         margin: 0;
-        font-size: 1.2rem;
-        line-height: 2.02;
+        font-size: 1.26rem;
+        line-height: 1.9;
         color: #1f2c27;
       }
 
@@ -257,13 +255,14 @@
 
       .section-heading {
         margin: 0 0 18px;
-        font-size: clamp(1.7rem, 3vw, 2.2rem);
+        font-size: 2.15rem;
         letter-spacing: -0.03em;
       }
 
       .section-card p {
         margin: 0 0 16px;
-        line-height: 1.85;
+        font-size: 1.26rem;
+        line-height: 1.9;
         color: #33413b;
       }
 
@@ -278,8 +277,9 @@
       }
 
       .bullet-list li {
-        margin: 0 0 12px;
-        line-height: 1.8;
+        margin: 0 0 16px;
+        font-size: 1.26rem;
+        line-height: 1.9;
       }
 
       .bullet-list li:last-child {
@@ -290,11 +290,15 @@
         display: block;
         margin-bottom: 4px;
         color: var(--text);
-        font-size: 1.02rem;
+        font-size: 1.26rem;
       }
 
       .project-text {
         color: var(--muted);
+      }
+
+      .bio-copy p {
+        color: #31403a;
       }
 
       .info-list {
@@ -337,13 +341,14 @@
       .pub-item strong {
         display: block;
         margin-bottom: 6px;
-        font-size: 1.02rem;
+        font-size: 1.26rem;
       }
 
       .pub-item span {
         display: block;
         color: var(--muted);
-        line-height: 1.65;
+        font-size: 1.26rem;
+        line-height: 1.9;
       }
 
       .pub-item span strong {
@@ -363,7 +368,7 @@
       .section-card .pub-note {
         margin: 14px 0 0 18px;
         color: rgba(85, 97, 91, 0.78);
-        font-size: 0.95rem;
+        font-size: 1.26rem;
       }
 
       #publications {
@@ -415,8 +420,8 @@
         }
 
         .statement-text {
-          font-size: 1.1rem;
-          line-height: 1.92;
+          font-size: 1.16rem;
+          line-height: 1.82;
         }
 
         .info-row {
@@ -460,7 +465,7 @@
         <div class="site-topbar">
           <p class="site-title">Nadav Bojan Sellam</p>
           <nav class="site-nav" aria-label="Primary">
-            <a href="#about">About</a>
+            <a href="#about">Bio</a>
             <a href="#ongoing-research">Research</a>
             <a href="#publications">Publications</a>
           </nav>
@@ -526,21 +531,6 @@
           </p>
           </section>
 
-          <section class="section-card" id="about">
-            <h2 class="section-heading">About</h2>
-            <p>
-              I work at the intersection of machine learning, structural biology, and computational
-              modeling, with a focus on methods that connect experimental observations to richer
-              representations of protein structure and dynamics.
-            </p>
-            <p>
-              My interests include inverse problems in biology, generative modeling for protein
-              ensembles, and representation learning for complex molecular systems. I am especially
-              interested in approaches that stay grounded in physical measurements while still scaling
-              with modern machine learning tools.
-            </p>
-          </section>
-
           <section class="section-card" id="ongoing-research">
             <h2 class="section-heading">Ongoing Research</h2>
             <ul class="bullet-list">
@@ -550,10 +540,16 @@
                   Learning
                 </strong>
                 <span class="project-text">
-                  A project aimed at understanding whether low rank is a driving factor behind
-                  generalization or merely a symptom of it, whether generalization can occur
-                  without low rank, and whether the implicit bias of modern optimizers gives rise
-                  to both low rank and generalization without a direct causal order between them.
+                  Current literature often treats low effective rank and neural collapse as causes
+                  of generalization, arising through the implicit bias of optimization. However,
+                  this picture does not account well for settings such as weight interpolation,
+                  where effective rank can increase, neural collapse can break, and generalization
+                  can still improve.
+                  <br /><br />
+                  In this project, I ask whether low rank is truly causal, or whether it is instead
+                  a by-product of optimization converging to simple low-norm solutions. My working
+                  hypothesis is that low rank is strongly correlated with such solutions, but is not
+                  itself the mechanism behind generalization.
                 </span>
               </li>
               <li>
@@ -567,6 +563,39 @@
                 </span>
               </li>
             </ul>
+          </section>
+
+          <section class="section-card" id="about">
+            <h2 class="section-heading">Bio</h2>
+            <div class="bio-copy">
+              <p>
+                I am a PhD student in computer science at ISTA and an ELLIS scholar. I completed
+                my BSc and MSc in computer science at the Technion, where I did my master's with
+                Prof. Alex Bronstein on machine learning for scientific applications.
+              </p>
+
+              <p>
+                My earlier research focused on generative modeling and probabilistic inference in
+                biology and physics. In particular, I worked on protein structure modeling under
+                experimental constraints, as well as on learning and inference in settings with
+                strong dependencies and non-i.i.d. sampling, where observations are correlated
+                rather than independently drawn. Working on these problems, increasingly pushed me toward more fundamental questions: why
+                modern machine learning models generalize so well, how generative models produce
+                realistic new samples, and what dynamics govern learning in highly
+                overparameterized systems.
+              </p>
+
+              <p>
+                I found the existing explanations in the literature unsatisfying, often incomplete,
+                fragmented, or even contradictory. Rather than accept this, I decided to approach
+                these questions directly. I am now focused on developing a mathematically grounded
+                understanding of training dynamics, implicit bias, and generalization in modern
+                machine learning, with the goal of connecting optimization, model structure, and
+                data assumptions into a unified theory.
+              </p>
+
+              <p>Outside of research, I enjoy reading, snowboarding, and surfing.</p>
+            </div>
           </section>
 
           <section class="section-card" id="publications">
